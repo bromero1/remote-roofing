@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
-const User = require("../models/User.model");
+const Project = require("../models/Project.model");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 // Get User list
-router.get("/API/user", (req, res) =>
+router.get("/", (req, res) =>
   User.findAll()
     .then((users) =>
       res.render("users", {
@@ -16,8 +16,5 @@ router.get("/API/user", (req, res) =>
     .catch((err) => console.log(err))
 );
 
-router.get("/", (function (req, res) {
-  res.send('<h1 style="text-align: center">users</h1>')
-})
-);
+
 module.exports = router;

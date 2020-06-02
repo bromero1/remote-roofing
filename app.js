@@ -16,8 +16,10 @@ app.get('/', function (req, res) {
     res.send('<h1 style="text-align: center">Remote Roofing Backend test</h1>')
   })
 
-
- app.use('/users', require('./routes/users'));
+// Routes to API
+ app.use('/API/users', require('./routes/users'));
+ app.use('/API/tasks', require('./routes/tasks'));
+ app.use('/API/projects', require('./routes/projects'));
 
 const PORT = process.env.PORT || 5000;
 
