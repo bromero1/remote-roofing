@@ -6,13 +6,20 @@ const User = db.define(
   {
     name: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
     email: {
       type: Sequelize.STRING,
-      primaryKey: true
+      primaryKey: true,
+      validate: {
+        isEmail: {
+          msg: "Invalid Email",
+        },
+      },
     },
     surname: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
   },
   {
