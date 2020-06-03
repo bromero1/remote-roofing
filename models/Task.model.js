@@ -1,16 +1,27 @@
-const Sequelize = require('sequelize');
-const db = require('../config/db');
+const Sequelize = require("sequelize");
+const db = require("../config/db");
 
-const Task = db.define('task', {
-  name: {
-    type: Sequelize.STRING
+const Task = db.define(
+  "task",
+  {
+    name: {
+      type: Sequelize.STRING,
+    },
+    description: {
+      type: Sequelize.TEXT,
+    },
+    score: {
+      type: Sequelize.INTEGER,
+    },
+    status: {
+      type: Sequelize.STRING,
+    }
+    
   },
-  email: {
-    type: Sequelize.STRING
-  },
-  surname: {
-    type: Sequelize.STRING
+  {
+    freezeTableName: true,
+    timestamps: false,
   }
-})
+);
 
 module.exports = Task;

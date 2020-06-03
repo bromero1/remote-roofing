@@ -3,14 +3,13 @@ const router = express.Router();
 const db = require("../config/db");
 const Task = require("../models/Task.model");
 const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
 
-// Get User list
+// Get Task list
 router.get("/", (req, res) =>
-  User.findAll()
-    .then((users) =>
-      res.render("users", {
-        users,
+  Task.findAll()
+    .then((tasks) =>
+      res.render("tasks", {
+        tasks,
       })
     )
     .catch((err) => console.log(err))

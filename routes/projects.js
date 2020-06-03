@@ -3,18 +3,16 @@ const router = express.Router();
 const db = require("../config/db");
 const Project = require("../models/Project.model");
 const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
 
-// Get User list
+// Get Project list
 router.get("/", (req, res) =>
-  User.findAll()
-    .then((users) =>
-      res.render("users", {
-        users,
+  Project.findAll()
+    .then((projects) =>
+      res.render("projects", {
+        projects,
       })
     )
     .catch((err) => console.log(err))
 );
-
 
 module.exports = router;
