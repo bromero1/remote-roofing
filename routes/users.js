@@ -3,21 +3,34 @@ const router = express.Router();
 const db = require("../config/db");
 const User = require("../models/User.model");
 const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
+const bodyParser = require("body-parser");
 
 // Get User list
-router.get("/API/user", (req, res) =>
+router.get("/", (req, res) =>
   User.findAll()
-    .then((users) =>
-      res.render("users", {
-        users,
-      })
-    )
+    .then((users) => res.send(users))
     .catch((err) => console.log(err))
 );
 
-router.get("/", (function (req, res) {
-  res.send('<h1 style="text-align: center">users</h1>')
-})
-);
+router.post("/", bodyParser.json(), (req, res) => {
+  var user = new User();
+  user.name = req.query.name;
+  user.surname = req.query.surname;
+  user.email = req.query.email;
+  console.log(user);
+  user
+    .save()
+    .then((user) => {
+      res.json("User added successfully");
+    })
+    .catch((err) => {
+      res.status(400).send("unable to save to database");
+    });
+});
+
 module.exports = router;
+
+// async (req, res) => {
+//   const {
+//     email, first_name, last_name, password,
+//   } = req.body;
