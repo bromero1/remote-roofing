@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require("../config/db");
 const Task = require("../models/Task.model");
 const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
 
 // Get User list
 router.get("/", (req, res) =>
