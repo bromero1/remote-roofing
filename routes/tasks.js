@@ -7,11 +7,7 @@ const Sequelize = require("sequelize");
 // Get Task list
 router.get("/", (req, res) =>
   Task.findAll()
-    .then((tasks) =>
-      res.render("tasks", {
-        tasks,
-      })
-    )
+    .then((tasks) => res.send(tasks))
     .catch((err) => console.log(err))
 );
 

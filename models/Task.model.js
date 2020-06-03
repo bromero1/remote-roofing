@@ -2,8 +2,13 @@ const Sequelize = require("sequelize");
 const db = require("../config/db");
 
 const Task = db.define(
-  "task",
+  "Task",
   {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     name: {
       type: Sequelize.STRING,
     },
@@ -15,8 +20,7 @@ const Task = db.define(
     },
     status: {
       type: Sequelize.STRING,
-    }
-    
+    },
   },
   {
     freezeTableName: true,
