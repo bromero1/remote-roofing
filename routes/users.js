@@ -29,8 +29,3 @@ router.post("/", bodyParser.json(), (req, res) => {
 });
 
 module.exports = router;
-
-// async (req, res) => {
-//   const {
-//     email, first_name, last_name, password,
-//   } = req.body;
